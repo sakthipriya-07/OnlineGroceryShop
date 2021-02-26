@@ -1,0 +1,34 @@
+{% extends "onlinegrocery/base.html" %}
+{% load static %}
+
+{% block title %}
+  {{ product.name }}
+{% endblock %}
+
+{% block content %}
+  <div id="product-detail">
+    <div id="product-detail-img-container">
+    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+    </div>
+  <div id="product-detail-description">
+    <h1>{{ product.name }}</h1>
+    <label>Description :</label> <div>{{ product.description|linebreaks }}</div>
+    <h4><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h4>
+    <p class="price">${{ product.price }}</p>
+
+    <form action="{% url "cart:cart_add" product.id %}" method="post">
+      {{ cart_product_form }}
+      {% csrf_token %}
+      {% if user.is_staff %}
+          <div class="product-update-options">
+              <a class="btn btn-primary" href="{% url 'products:product_edit' pk=product.pk %}">Edit product</a>
+              <a class="btn btn-danger" href="{% url 'products:product_delete' pk=product.pk %}">Delete</a>
+          </div>
+      {% else %}
+          <input type="submit" value="Add to cart">
+      {% endif %}
+    </form>
+
+  </div>
+  </div>
+{% endblock %}

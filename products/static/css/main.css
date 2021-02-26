@@ -1,0 +1,64 @@
+nav ul {
+    margin: 50px;
+
+
+}
+
+
+nav a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+header {
+    background-color: black;
+}
+
+nav2 ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav2 li {
+
+    display: inline-block;
+    margin-top: auto;
+    padding-top: auto;
+}
+
+header {
+    background-color: forestgreen;
+}
+
+nav2 a {
+
+    color: white;
+    text-decoration: none;
+    text-transform: lowercase;
+    font-size: 20px;
+    background: forestgreen;
+    border-radius: 20px;
+    width: 1000px;
+    padding: 10px;
+    height: 100px;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.navbar-custom {
+            background-color: forestgreen;
+  img {
+  vertical-align: middle;
+}
+
+
+.carousel-indicators .active{
+    background-color: forestgreen;
+}
+.carousel-indicators li {
+  background-color: forestgreen;
+  background-color: forestgreen;
+}

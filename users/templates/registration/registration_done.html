@@ -1,0 +1,6 @@
+{% extends "onlinegrocery/base.html" %}
+{% block title %}Registered successfully{% endblock %}
+{% block content %}
+    <h1>Registered successfully</h1>
+    <p>You have logged in successfully. You can <a href ="{% url 'users:login' %}">login here</a></p>
+{% endblock %}

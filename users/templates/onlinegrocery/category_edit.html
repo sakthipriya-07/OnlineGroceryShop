@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'onlinegrocery/base.html' %}
+{% block content %}
+    <h1 class="headings">Edit Category</h1>
+    <form method="POST" class="custom-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="buttons-container">
+            <button type="submit" class="save btn btn-default">Update</button>
+            <a href="{% url 'products:category_delete' pk=pk %}" type="button" class="save btn btn-default">Delete</a>
+        </div>
+    </form>
+{% endblock %}
+</html>

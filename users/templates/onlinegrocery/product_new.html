@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'onlinegrocery/base.html' %}
+{% block content %}
+    <h1 class="headings">Add a New Product</h1>
+    <form method="POST" class="custom-form" enctype="multipart/form-data">{% csrf_token %}
+          {{ form.as_p }}
+        <div class="buttons-container">
+            <button type="submit" class="save btn btn-default">Save</button>
+        </div>
+    </form>
+{% endblock %}
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'onlinegrocery/base.html' %}
+{% load static %}
+{% block content %}
+
+   <body>
+   {% if user.is_authenticated %}
+       <div class="page-container">
+           <h2 class="top-menu">Hello {{ user.username }},</h2>
+           <p>Please choose from below options.</p>
+
+       </div>
+   {% endif %}
+   <div class="content">
+       <div class="row">
+           <div class="col-md-12">
+               <div class="links">
+                   <!-- Example row of columns -->
+                   <div class="row">
+                       <div class="col-md-3">
+                           <div class="thumbnail">
+                               <div class="thumbnail-heading">
+                                   <h3>Categories</h3>
+                               </div>
+                               <img src="{% static "img/Categories.png" %}" id="categories-img" alt="categories"/>
+                               <div class="caption">
+                                   <h4>Total number of categories : {{ context.categoryCount }}</h4>
+                                   <a class="btn btn-primary" href="{% url 'products:category_new' %}"><span class="glyphicon glyphicon-plus"></span> Add</a>
+                                   <a class="btn btn-primary" href="{% url 'products:category_list_emp' %}"><span class="glyphicon glyphicon-th-list"></span> View list</a>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-md-3">
+                           <div class="thumbnail">
+                               <div class="thumbnail-heading">
+                                    <h3>Products</h3>
+                               </div>
+                               <img src="{% static "img/Products.png" %}" alt="products"/>
+                               <div class="caption">
+                                   <h4>Total number of products : {{ context.productsCount }}</h4>
+                                   <a class="btn btn-primary" href="{% url 'products:product_new' %}"><span class="glyphicon glyphicon-plus"></span> Add</a>
+                                   <a class="btn btn-primary" href="{% url 'products:product_list' %}"><span class="glyphicon glyphicon-th-list"></span> View list</a>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-md-3">
+                           <div class="thumbnail">
+                               <div class="thumbnail-heading">
+                                    <h3>Customers</h3>
+                               </div>
+                               <img src="{% static "img/Customers.png" %}" alt="customers"/>
+                               <div class="caption">
+                                   <h4>Total number of customers : {{ context.customerCount }}</h4>
+                                   <a class="btn btn-primary" href="{% url 'users:register_customer' %}"><span class="glyphicon glyphicon-plus"></span> Add</a>
+                                   <a class="btn btn-primary" href="{% url 'users:customer_list' %}"><span class="glyphicon glyphicon-th-list"></span> View list</a>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-md-3">
+                           <div class="thumbnail">
+                               <div class="thumbnail-heading">
+                                    <h3>Orders</h3>
+                               </div>
+                               <img src="{% static "img/Orders.png" %}" alt="orders"/>
+                               <div class="caption">
+                                   <h4>Total number of orders : {{ context.orderCount }}</h4>
+                                   <a class="btn btn-primary" href="{% url 'orders:order_list' %}"><span class="glyphicon glyphicon-th-list"></span> View list</a>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+   </body>
+
+{% endblock %}
+
+</html>

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+ <html lang="en">
+ {% extends 'onlinegrocery/base.html' %} 
+ {% block content %} 
+     <h1>BE IN TOUCH</h1>
+     <p>If you don't see what you're looking for, or would like us to work with you on a custom design, feel free to be in touch!</p> 
+    <form action="." method="post">
+    {{ form.as_p }}
+    <p><input type="submit" value="Submit"></p>
+    {% csrf_token %}
+  </form>
+{% endblock %}

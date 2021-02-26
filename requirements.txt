@@ -1,0 +1,5 @@
+django
+braintree
+pillow
+weasyprint
+django-filter

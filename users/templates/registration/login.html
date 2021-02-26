@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% extends 'onlinegrocery/base.html' %}
+{% block content %}
+    <h1 class="headings">Login</h1>
+    <form method="post" class="custom-form"action="{% url 'login' %}">
+    </br>
+        {{ form.as_p }}
+        {% csrf_token %}
+        <div class="buttons-container">
+            <input type="submit" class="btn btn-default" value="login"/>
+            <a href="{% url 'users:register_customer' %}">Not a user? register now! </a>
+            <input type="hidden" name="next" value="{{ next }}"/>
+        </div>
+        <p id="password-reset-link"><a href="{% url 'users:password_reset_form' %}">Forgotten your  password?</a></p>
+
+    </form>
+{% endblock %}
+
+</html>

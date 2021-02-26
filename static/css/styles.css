@@ -1,0 +1,37 @@
+<style>
+h1 {
+  color:black;
+  text-align:center;
+}
+
+h2{
+  text-align:center;
+  background-color:rgb(153,255,255);
+
+  display: inline-block;
+}
+
+body {
+  background-color:white;
+
+}
+h1{
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);}
+h2{
+  position: absolute;
+top: 45%;
+left: 50%;
+transform: translate(-50%, -50%);}
+
+.carousel-indicators .active{
+    background-color: forestgreen;
+}
+.carousel-indicators li {
+  background-color: forestgreen;
+  background-color: forestgreen;
+}
+
+</style>

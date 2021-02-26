@@ -1,0 +1,35 @@
+{% extends "onlinegrocery/base.html" %}
+
+{% block title %}
+  Checkout
+{% endblock %}
+
+{% block content %}
+  <div class="order-navigation-bar">
+      <span>1. Shopping cart</span>
+      <span class="order-navigation-selected">2. Shipping Address</span>
+      <span>3. Payment options</span>
+  </div>
+  <h1>Checkout</h1>
+
+  <div class="order-info">
+    <h3>Your order</h3>
+    <ul>
+      {% for item in cart %}
+        <li>
+          {{ item.quantity }}x {{ item.product.name }}
+          <span>${{ item.total_price|floatformat:"2" }}</span>
+        </li>
+      {% endfor %}
+
+    </ul>
+
+
+  </div>
+
+  <form action="." method="post" class="order-form">
+    {{ form.as_p }}
+    <p><input type="submit" value="Place order"></p>
+    {% csrf_token %}
+  </form>
+{% endblock %}

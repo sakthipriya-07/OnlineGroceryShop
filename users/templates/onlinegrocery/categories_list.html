@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'onlinegrocery/base.html' %}
+
+{% block content %}
+
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title> Grocery Shop | Categories list</title>
+    </head>
+    <body>
+
+    <div class="row">
+        <h2 class="headings">Categories list</h2>
+    </div>
+    <div>
+        <table class="table table-striped table-bordered table-hover custom-table" id="categories-list">
+            <thead>
+            <tr>
+                <th>Categories</th>
+                <th>Slug</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for category in categories %}
+                <tr>
+                    <td><a href="{% url 'products:category_edit' pk=category.pk %}">{{ category.name }}</a></td>
+                    <td>{{ category.slug }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </body>
+    </html>
+{% endblock %}
+</html>

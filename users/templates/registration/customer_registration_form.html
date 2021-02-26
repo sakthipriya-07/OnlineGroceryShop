@@ -1,0 +1,23 @@
+{% extends "onlinegrocery/base.html" %}
+
+{% block title %}
+    Create User - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+    <div>
+        <h1 class="headings">Sign Up</h1>
+
+        <form method="post" class="custom-form">
+            {% csrf_token %}
+            <table id="registration-form">
+                {{ form.as_table }}
+            </table>
+            <div class="buttons-container">
+                <input class="btn btn-default" type="submit" name="submit" value="Register"/>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

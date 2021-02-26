@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'onlinegrocery/base.html' %}
+{% block content %}
+    <h1 class='headings' >Delete category</h1>
+    <form method="post" class="custom-form">
+        {% csrf_token %}
+        <h4>Are you sure you want to delete the category : <b>{{ category.name }}</b></h4>
+        <h5><span class="glyphicon glyphicon-warning-sign"></span> Attention !!! This action cannot be undone and you will lose the data forever!</h5>
+        <div class="buttons-container">
+            <input type="submit" class="btn btn-danger" value="Delete">
+            <a href="{% url 'products:category_list_emp'  %}">Cancel</a>
+        </div>
+    </form>
+{% endblock %}
+</html>

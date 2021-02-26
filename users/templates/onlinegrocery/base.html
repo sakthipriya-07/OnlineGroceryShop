@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>{% block title %}Online Grocery{% endblock %}</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="{% static "css/base.css" %}" rel="stylesheet">
+  <link href="{% static "css/main.css" %}" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="{% static 'javascript/base.js' %}"></script>
+</head>
+<body>
+
+
+        <nav  class="navbar navbar-custom">
+        <ul class="nav navbar-nav">
+
+            <li><a href="{% url 'products:home' %}">Home</a></li>
+            <li><a href="{% url 'users:about' %}">About</a></li>
+            <li><a href="{% url 'users:faq' %}">Faq</a></li>
+            <li><a href="{% url 'products:visitor_new' %}">Contact</a></li>
+            <li><a href="{% url 'cart:cart_detail' %}"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+        <li>
+
+            <a href="#" class="glyphicon glyphicon-down" data-toggle="dropdown" role="button" aria-expanded="false">
+            <span>All Categories</span>
+            </a>
+
+                        <ul class="dropdown-menu" role="menu">
+
+{% for c in categories%}
+        <li {% if category.slug == c.slug %}class="selected"{% endif %}>
+          <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+        </li>
+
+
+{% endfor %}
+
+
+                        </ul>
+            <li>
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li class="dropdown">
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <i class="glyphicon glyphicon-user"></i>
+                            <span>{{ user.username }}</span>
+                            <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{% url 'users:edit_customer' pk=user.pk %}">Edit profile</a></li>
+                            <li><a href="{% url 'password_change' %}">Change password</a></li>
+                            <li><a href="{% url 'logout' %}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+
+                        </ul>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-user"></span> Login | Signup</a></li>
+                {% endif %}
+            </ul>
+    </nav>
+
+  <div id="content">
+    {% block content %}
+    {% endblock %}
+  </div>
+</body>
+</html>

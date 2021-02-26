@@ -1,0 +1,58 @@
+{% extends "onlinegrocery/base.html" %}
+{% load static %}
+
+{% block title %}
+  {% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% endblock %}
+
+{% block content %}
+  <div id="sidebar">
+    <h3>Categories</h3>
+    <ul>
+      <li {% if not category %}class="selected"{% endif %}>
+        <a href="{% url "products:product_list" %}">All</a>
+      </li>
+      {% for c in categories %}
+        <li {% if category.slug == c.slug %}class="selected"{% endif %}>
+          <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div id="main" class="product-list">
+    <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
+    <form method="GET" class="filter-form" id="product-filter">
+      <span class="glyphicon glyphicon-filter"></span><span><b>Filters : </b></span>
+        <div>
+      {{ productFilter.form }}
+      <input type="submit" value="Filter" class="btn btn-default"/>
+        <input  type="submit" value="Clear" class="btn btn-default" onclick="resetform()">
+    </div>
+    </form>
+    {% for product in products %}
+      <div class="item">
+        <div class="product-img-container">
+            <a href="{{ product.get_absolute_url }}">
+                <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+            </a>
+        </div>
+      <div class="product-name">
+            <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
+            ${{ product.price }}
+      </div>
+      </div>
+{#        <div class="card-columns">#}
+{#        <div class="card-body">#}
+{#            <a href="{{ product.get_absolute_url }}">#}
+{#                <img src="{% if product.image %}{{ product.image.url }}#}
+{#                          {% else %}{% static "img/no_image.png" %}{% endif %}">#}
+{#            </a>#}
+{#        </div>#}
+{#        <div class="card-text">#}
+{#            <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>#}
+{#                ${{ product.price }}#}
+{#        </div>#}
+{#      </div>#}
+    {% endfor %}
+  </div>
+{% endblock %}
