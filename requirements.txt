@@ -1,11 +1,5 @@
+django
 braintree
 pillow
 weasyprint
 django-filter
-Django==2.2.4
-psycopg2==2.8.4
-gunicorn
-django-heroku
-whitenoise==4.0
-django-storages==1.7.2
-boto3==1.9.234
